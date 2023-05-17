@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicuality: SalesRegister</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</head>
+<body>
+
+ <div class="text-center" align="center">
+   <p>Medicuality <br>Healthcare Services <br> 225, Indiralaya, Metropolis Fair Oaks, <br>Dodda-Thimmasandra Road, Sarjapur, <br>Banglore -- 562125 </p>
+ </div>
+ <td><hr style="border-top: dotted 1px;" /></td>
+ <div class="text-center">
+   <p>From Date --- To Date</p>
+   <h6>{{start}}----{{end}}</h6>
+ </div>
+ <hr style="border-top: dotted 1px;" />
+ <div class="text-center container d-flex justify-content-center">
+<div class="table-responsive pt-5 mb-5 d-flex">
+ 
+   <table class="table-responsive">
+     <tr> 
+       <th class="pb-5 text-start">Bill No</th>
+       <th class="px-5 pb-5">Date</th>
+       <th class="px-5 pb-5">Bill Value</th>
+       <th class="px-5 pb-5">Amount </th>
+       <th class="px-5 pb-5">S GST</th>
+       <th class="px-5 pb-5">C GST</th>
+     </tr>
+     
+     {% for lst in lst %}
+     <tr>
+      <td><hr></td>
+      <td><hr></td>
+      <td><hr></td>
+      <td><hr></td>
+      <td><hr></td>
+      <td><hr></td>
+     </tr>
+         {% for pats in cus_info %}
+             {% if pats.id == lst %}
+                 <tr>
+                   <td class="text-start" style="padding-top: 5px;"><b>{{pats.patient_name}}<br>{{pats.city}}</b></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                 </tr>
+             {% endif %}
+         {% endfor %}
+
+         {% for records in records %}
+           <tr>
+             {% if records.patient_id.id ==  lst %}
+               <td>{{records.id}}</td>
+               <td>{{records.time_stamp.date}}</td>
+               <td>{{records.amount}}</td>
+               <td>{{records.total_amount}}</td>
+               <td>{{records.s_gst}}</td>
+               <td>{{records.c_gst}}</td>
+             {% endif %}
+           </tr>
+         {% endfor %}
+
+         <tr>
+          <td><hr></td>
+          <td><hr></td>
+          <td><hr></td>
+          <td><hr></td>
+          <td><hr></td>
+          <td><hr></td>
+         </tr>
+         {% for lst2 in total %}
+             {% if lst in lst2 %}
+               <tr>
+                 <td style="padding-top: 4px;">Total</td>
+                   {% for lst1 in lst2 %}
+                     <td>{{lst1}}</td>
+                   {% endfor %}
+                 </tr>
+             {% endif %}
+         {% endfor %}
+
+         <tr>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+         </tr>
+     {% endfor %}
+         <tr>
+          <td><hr></td>
+          <td><hr></td>
+          <td><hr></td>
+          <td><hr></td>
+          <td><hr></td>
+          <td><hr></td>
+         </tr>
+     <tr>
+       <td style="padding-top: 5px;">Grand Total </td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+     </tr>
+
+
+     <tr>
+       <td></td>
+       <td></td>
+       {% for i in g_total %}
+         <td>{{i}}</td>
+       {% endfor %}
+     </tr>
+     
+       
+
+   </table>
+ </div>
+</body>
+</html>
